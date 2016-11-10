@@ -6,9 +6,9 @@ import (
 )
 
 func TestServer(t *testing.T) {
-  err := initServer()
+  is, err := initServer(true)
   if err != nil {
     t.Fatal(err)
   }
-	assert.Equal(t, true, err)
+	assert.Equal(t, true, is)
 }

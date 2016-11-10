@@ -80,7 +80,7 @@ func checkLogin(usr string, psw string) bool {
 
 func main() {
 
-	err := initServer()
+	_, err := initServer(false)
 	if err != nil {
 		fmt.Println("Main error")
 		log.Fatal("Server Error: ", err)
@@ -88,30 +88,33 @@ func main() {
 
 }
 
-func initServer() error {
+func initServer(isTesting bool) (bool, error) {
 	//init
 	rand.Seed(time.Now().UnixNano())
 	http.HandleFunc("/", getData)
 	http.HandleFunc("/userContent", userContent)
 	ports := generatePortArray()
 	var error error;
+	var isCreated bool;
 
 	// ERROR DEBUG
 	//ports[0] = ":80"
-	//ports[1] = ":123"
 
 	//start server
 	if ports[0] != "" {
-		err := createServer(ports)
+		cs, err := createServer(ports, isTesting)
+		isCreated = cs
 		if err != nil {
 			error := err;
-			return error
+			return isCreated, error
+		} else {
+			return isCreated, nil
 		}
 	} else {
 		log.Fatal("No port list created!")
 	}
 
-	return error
+	return isCreated, error
 
 }
 
@@ -121,7 +124,7 @@ func openBrowser(port string){
 	open.Run(url)
 }
 
-func createServer(ports [5]string) error {
+func createServer(ports [5]string, isTesting bool) (bool, error) {
 
 	var error error;
 
@@ -131,12 +134,15 @@ func createServer(ports [5]string) error {
 		if error != nil {
 			fmt.Println("Cannot use this Port", p, "retry...")
 		} else {
-			openBrowser(p)
-			http.Serve(li, nil)
+			if (isTesting == false){
+				openBrowser(p)
+				http.Serve(li, nil)
+			} else {
+				return true, nil
+			}
 		}
 	}
-
-	return error
+	return false, error
 	//log.Fatal("Server Error: ", error)
 }
 
