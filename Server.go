@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"net"
 	"os"
+	"github.com/ttacon/chalk"
 )
 
 func getData(w http.ResponseWriter, r *http.Request) {
@@ -23,8 +24,8 @@ func getData(w http.ResponseWriter, r *http.Request) {
 		tmp.Execute(w, nil)
 	} else {
 		fmt.Println("\nGenerated Tokens")
-		fmt.Println("access token: ", generateToken())
-		fmt.Println("refresh token: ", generateToken())
+		fmt.Println("access token: ", chalk.White, generateToken(), chalk.Reset)
+		fmt.Println("refresh token: ", chalk.White,  generateToken(), chalk.Reset)
 		os.Exit(1)
 	}
 }
@@ -53,7 +54,7 @@ func userContent(w http.ResponseWriter, r *http.Request) {
 	// Check if login correct and when true display content.html
 	if usr != "" && psw != "" {
 		if checkLogin(usr, psw) == true {
-			fmt.Println("\nUser successful logged in")
+			fmt.Println(chalk.Green, "\nUser successful logged in", chalk.Reset)
 			tmp, err := template.ParseFiles("content.html")
 			if err != nil {
 				log.Fatal("HTML Template Error: ", err)
@@ -72,7 +73,7 @@ func checkLogin(usr string, psw string) bool {
 	if usr == "test" && psw == "1234" {
 		return true
 	} else {
-		fmt.Println("Wrong login!")
+		fmt.Println(chalk.Red, "\nWrong login!", chalk.Reset)
 		return false
 	}
 

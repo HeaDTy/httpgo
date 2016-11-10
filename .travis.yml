@@ -7,3 +7,4 @@ go:
 install:
   - go get github.com/skratchdot/open-golang/open
   - go get github.com/bmizerany/assert
+  - go get github.com/ttacon/chalk
