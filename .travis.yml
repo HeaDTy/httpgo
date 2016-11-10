@@ -3,4 +3,6 @@ language: go
 go:
   - 1.7.3
   - master
+
+install:
   - go get github.com/skratchdot/open-golang/open
