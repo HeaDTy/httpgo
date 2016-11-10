@@ -1,0 +1,28 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;HttpServerReturn&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../.idea" />
+      <root url="file://$PROJECT_DIR$/../Pointers" />
+      <root url="file://$PROJECT_DIR$/../GoTest" />
+      <root url="file://$PROJECT_DIR$/../greet" />
+      <root url="file://$PROJECT_DIR$/../Gipsy" />
+      <root url="file://$PROJECT_DIR$/../slides" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../.idea" />
+      <root url="file://$PROJECT_DIR$/../Pointers" />
+      <root url="file://$PROJECT_DIR$/../GoTest" />
+      <root url="file://$PROJECT_DIR$/../greet" />
+      <root url="file://$PROJECT_DIR$/../Gipsy" />
+      <root url="file://$PROJECT_DIR$/../slides" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
