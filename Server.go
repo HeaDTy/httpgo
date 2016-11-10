@@ -97,11 +97,8 @@ func initServer() error {
 	var error error;
 
 	// ERROR DEBUG
-	ports[0] = ":80"
-	ports[1] = ":123"
-	ports[2] = ":123"
-	ports[3] = ":123"
-	ports[4] = ":123"
+	//ports[0] = ":80"
+	//ports[1] = ":123"
 
 	//start server
 	if ports[0] != "" {
