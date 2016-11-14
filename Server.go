@@ -17,7 +17,7 @@ import (
 func getData(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
-		tmp, err := template.ParseFiles("text.html")
+		tmp, err := template.ParseFiles("index.html")
 		if err != nil {
 			log.Fatal("HTML Template Error: ", err)
 		}
@@ -94,6 +94,7 @@ func initServer(isTesting bool) (bool, error) {
 	rand.Seed(time.Now().UnixNano())
 	http.HandleFunc("/", getData)
 	http.HandleFunc("/userContent", userContent)
+	http.Handle("/resources/", http.StripPrefix("/resources/", http.FileServer(http.Dir("resources"))))
 	ports := generatePortArray()
 	var error error;
 	var isCreated bool;
