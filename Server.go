@@ -199,24 +199,28 @@ func setDBTokens(access_token string, refresh_token string, usr string) {
 }
 
 func writeDBUser(usr string, psw string, email string) bool {
-	db, err := sql.Open("mysql", "admin:mg545Iop@/goLoginApp")
-	checkDBErr(err)
+	if usr != "" && psw != "" && email != "" {
+		db, err := sql.Open("mysql", "admin:mg545Iop@/goLoginApp")
+		checkDBErr(err)
 
-	stmt, err := db.Prepare("INSERT users SET username=?,email=?,password=?")
-	checkDBErr(err)
+		stmt, err := db.Prepare("INSERT users SET username=?,email=?,password=?")
+		checkDBErr(err)
 
-	res, err := stmt.Exec(usr, email, psw)
-	checkDBErr(err)
+		res, err := stmt.Exec(usr, email, psw)
+		checkDBErr(err)
 
-	id, err := res.LastInsertId()
-	checkDBErr(err)
+		id, err := res.LastInsertId()
+		checkDBErr(err)
 
-	if id != -1 {
+		if id != -1 {
+			db.Close()
+			return true
+		}
 		db.Close()
-		return true
+		return false
 	}
 
-	db.Close()
+	fmt.Println("Sign in: No Input")
 	return false
 }
 
