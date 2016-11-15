@@ -6,14 +6,15 @@
     <link href="resources/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- <h1>Get Tokens</h1>
-    <form action="/" method="post">
-        <input type="submit" value="getTokens">
-    </form> -->
-
+    <ul>
+        <li><a class="active" href="#home">User: %s</a></li>
+    </ul>
     <div class="login-page">
         <div class="form">
-            <form action="/" method="post" class="login-form">
+            <form action ="/logout" method="post" class="login-form">
+                <input class="button" type="submit" value="Logout">
+            </form>
+            <form action ="/token" method="post" class="login-form">
                 <input class="button" type="submit" value="Get Tokens">
             </form>
         </div>
